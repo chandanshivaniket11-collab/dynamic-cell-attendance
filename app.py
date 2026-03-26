@@ -63,8 +63,8 @@ col1, col2 = st.columns([0.3, 0.7])
 
 with col1:
     if LOGO_PATH:
-        # Increased width from 80 to 250 for a much bigger look
-        st.image(LOGO_PATH, width=250)
+        # Increased width from 80 to 350 for a much bigger look
+        st.image(LOGO_PATH, width=350)
 
 with col2:
     # Adding some padding to center the title vertically with the big logo
