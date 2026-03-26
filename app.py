@@ -20,7 +20,7 @@ def add_member(name):
         f.write(name + "\n")
 
 # --- APP START ---
-st.title("📊 Universal Attendance Tracker")
+st.title("📊 Dynamic Cell Attendance Tracker")
 
 # Load the current list of members
 all_members = load_members()
