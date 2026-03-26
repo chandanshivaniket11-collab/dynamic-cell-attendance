@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 
 # Page configuration
-st.set_page_config(page_title="Attendance Tracker", layout="wide")
+st.set_page_config(page_title="Dynamic Cell Tracker", layout="wide")
 
 # --- DATABASE SETUP (Simple Text File) ---
 DB_FILE = "members.txt"
