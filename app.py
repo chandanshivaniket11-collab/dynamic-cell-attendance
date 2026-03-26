@@ -20,14 +20,20 @@ def add_member(name):
         f.write(name + "\n")
 
 # --- APP START ---
-st.title("📊 Dynamic Cell Attendance Tracker")
-
 # Load the current list of members
 all_members = load_members()
 all_members.sort()
 
-# --- SIDEBAR: MEETING & NEW MEMBERS ---
+# --- SIDEBAR: LOGO, MEETING & NEW MEMBERS ---
 with st.sidebar:
+    # ADDING YOUR LOGO HERE
+    try:
+        st.image("logo.jpeg", use_container_width=True)
+    except:
+        st.warning("Logo file (logo.jpeg) not found in folder.")
+    
+    st.divider()
+    
     st.header("Meeting Info")
     meeting_name = st.text_input("Meeting Name", "Dynamic Cell")
     meeting_date = st.date_input("Date", datetime.now())
@@ -40,11 +46,12 @@ with st.sidebar:
         if new_name and new_name not in all_members:
             add_member(new_name)
             st.success(f"Added {new_name}!")
-            st.rerun() # Refresh the app to show the new name
+            st.rerun() 
         else:
             st.warning("Name is empty or already exists.")
 
 # --- MAIN AREA: SEARCH & ATTENDANCE ---
+st.title("📊 Dynamic Cell Attendance Tracker")
 st.subheader(f"Mark Attendance: {meeting_name}")
 
 search_query = st.text_input("🔍 Search for a member...", "")
@@ -56,7 +63,8 @@ if filtered_members:
     cols = st.columns(3) 
     for i, member in enumerate(filtered_members):
         with cols[i % 3]:
-            if st.checkbox(member, key=member):
+            # Use a unique key for checkboxes to prevent errors
+            if st.checkbox(member, key=f"att_{member}"):
                 attendance_data.append(member)
 else:
     st.warning("No members found.")
